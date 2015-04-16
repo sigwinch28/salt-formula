@@ -1,8 +1,12 @@
 {% set audio = salt['grains.filter_by']({
   'Arch': {
     'alsa': {
-      'plugins': [ 'alsa-plugins', ],
+      'plugins': [ 'alsa-plugins', 'lib32-alsa-plugins', ],
       'utils': [ 'alsa-utils', ],
+    },
+    'pulseaudio': {
+      'pkgs': [ 'pulseaudio', 'pulseaudio-alsa', 'lib32-libpulse', ],
+      'utils': [ 'paprefs', 'pavucontrol', ],
     },
   },
 }, merge=salt['pillar.get']('audio:lookup')) %}

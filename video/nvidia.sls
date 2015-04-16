@@ -7,3 +7,8 @@ video_driver:
 nvidia_libgl:
   pkg.installed:
     - name: lib32-nvidia-libgl
+
+nvidia_vdpau:
+  pkg.installed:
+    - name: libvdpau
+

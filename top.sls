@@ -7,4 +7,5 @@ base:
     - pacman
   'ryuko':
     - desktop
+    - audio.alsa
     - video.nvidia

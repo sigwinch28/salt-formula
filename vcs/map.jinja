@@ -1,0 +1,9 @@
+{% set vcs = salt['grains.filter_by']({
+  'Arch': {
+    'git': {
+      'pkgs': [
+        'git',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('vcs:lookup')) %}

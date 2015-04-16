@@ -1,0 +1,10 @@
+{% set utils = salt['grains.filter_by']({
+  'Arch': {
+    'aur': [ 'expac', 'yajl' ],
+    'htop': [ 'htop' ],
+    'ssh_client': [ 'openssh' ],
+    'stow': [ 'stow' ],
+    'wget': [ 'wget' ],
+    'xdg': [ 'xdg-user-dirs' ],
+  },
+}, merge=salt['pillar.get']('utils:lookup')) %}

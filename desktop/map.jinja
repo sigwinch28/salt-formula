@@ -1,0 +1,31 @@
+{% set desktop = salt['grains.filter_by']({
+  'Arch': {
+    'apps': {
+      'browser': [
+        'firefox',
+        'firefox-i18n-en-gb',
+      ],
+      'chat': [
+        'hexchat',
+      ],
+    },
+    'fonts': {
+      'pkgs': [
+        'ttf-dejavu',
+      ],
+    },
+    'wm': {
+      'pkgs': [
+        'bspwm',
+        'sxhkd',
+      ],
+    },
+    'xorg': {
+      'pkgs': [
+        'xorg-server',
+        'xorg-xinit',
+        'xterm',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('desktop:lookup')) %}

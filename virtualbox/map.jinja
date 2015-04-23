@@ -1,0 +1,13 @@
+{% set virtualbox = salt['grains.filter_by']({
+  'Arch': {
+    'host': {
+      'pkgs': [
+        'virtualbox',
+        'virtualbox-host-modules',
+      ],
+      'modules': [
+        'vboxdrv',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('virtualbox:lookup')) %}

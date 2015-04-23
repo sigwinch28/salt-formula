@@ -9,3 +9,5 @@ base:
     - desktop
     - audio.pulseaudio
     - video.nvidia
+    - virtualbox.host
+

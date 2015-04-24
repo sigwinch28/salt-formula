@@ -1,0 +1,7 @@
+{% set systemd = salt['grains.filter_by']({
+  'Arch': {
+    'dirs': {
+      'user': '/etc/systemd/user',
+    },
+  },
+}, merge=salt['pillar.get']('systemd:lookup')) %}

@@ -7,9 +7,11 @@ base:
     - match: grain
     - pacman
   'ryuko':
+    - audio.pulseaudio
     - desktop
     - gpg.service
-    - audio.pulseaudio
+    - ssh.client
+    - ssh.server
     - video.nvidia
     - virtualbox.host
 

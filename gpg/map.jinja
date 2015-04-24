@@ -1,0 +1,7 @@
+{% set gpg = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'gnupg',
+    ],
+  },
+}, merge=salt['pillar.get']('gpg:lookup')) %}

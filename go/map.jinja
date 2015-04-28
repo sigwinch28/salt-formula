@@ -1,0 +1,7 @@
+{% set go = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'go',
+    ],
+  },
+}, merge=salt['pillar.get']('go:lookup')) %}

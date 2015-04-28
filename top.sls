@@ -9,6 +9,7 @@ base:
   'ryuko':
     - audio.pulseaudio
     - desktop
+    - go
     - gpg.service
     - ssh.client
     - ssh.server

@@ -1,0 +1,7 @@
+{% set zsh = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'zsh',
+    ],
+  },
+}, merge=salt['pillar.get']('zsh:lookup')) %}

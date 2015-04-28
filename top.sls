@@ -3,6 +3,7 @@ base:
     - gpg
     - vcs
     - utils
+    - zsh
   'os:Arch':
     - match: grain
     - pacman

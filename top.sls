@@ -39,6 +39,7 @@ base:
     - fonts
     - gpg
     - gpg.agent
+    - irc
     - ssh.agent
     - ssh.client
     - utils

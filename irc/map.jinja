@@ -1,0 +1,9 @@
+{% set irc = salt['grains.filter_by']({
+  'Arch': {
+    'weechat': {
+      'pkgs': [
+        'weechat',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('irc:lookup')) %}

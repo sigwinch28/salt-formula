@@ -1,9 +1,11 @@
-{% set video_vendor = salt['grains.get']('video_vendor', '') %}
+{% set video = salt['grains.get']('video', '') %}
+{% set desktop = salt['grains.get']('desktop', 'false') %}
 
 base:
 #------------------------------------------------------------------------------
 # All Hosts
 #------------------------------------------------------------------------------
+
   '*':
     - zsh
 
@@ -11,7 +13,10 @@ base:
 # Operating Systems
 #------------------------------------------------------------------------------
 
+#
 # Arch Linux
+#
+
   'os:Arch':
     - match: grain
     - pacman
@@ -20,19 +25,23 @@ base:
 # Custom Grains
 #------------------------------------------------------------------------------
 
+#
 # Video Drivers
-{% if video_vendor %}
-  'video_vendor:{{ self }}':
+#
+
+{% if video %}
+  'video:{{ video }}':
     - match: grain
-    - video.{{ self }}
+    - video.{{ video }}
 {% endif %}
 
-#------------------------------------------------------------------------------
-# Hosts
-#------------------------------------------------------------------------------
+#
+# Desktop applications
+#
 
-# Personal Desktop
-  'ryuko':
+{% if desktop %}
+  'desktop:true':
+    - match: grain
     - browser
     - fonts
     - gpg
@@ -40,5 +49,5 @@ base:
     - ssh.agent
     - ssh.client
     - vcs
-    - video.nvidia
+{% endif %}
 

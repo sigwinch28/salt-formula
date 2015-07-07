@@ -1,6 +1,7 @@
 {% set xorg = salt['grains.filter_by']({
   'Arch': {
     'pkgs': [
+      'xbindkeys',
       'xorg-server',
       'xorg-xinit',
       'xorg-xfontsel',
@@ -8,6 +9,7 @@
       'xorg-xrandr',
       'xorg-xset',
       'xorg-xsetroot',
+      'xorg-xwininfo',
       'arandr',
       'xterm',
       ],

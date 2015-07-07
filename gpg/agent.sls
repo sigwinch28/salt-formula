@@ -3,10 +3,7 @@
 
 include:
   - gpg
-
-systemd-user:
-  file.exists:
-    - name: {{ systemd.dirs.user }}
+  - systemd
 
 gpg-unit-user:
   file.managed:

@@ -2,7 +2,7 @@
 # Variables for dynamic forumla selection
 #
 {% set video = salt['grains.get']('video', '') %}
-{% set desktop = salt['grains.get']('desktop', 'false') %}
+{% set roles = salt['grains.get']('role', '') %}
 
 base:
 #------------------------------------------------------------------------------
@@ -10,6 +10,8 @@ base:
 #------------------------------------------------------------------------------
 
   '*':
+    - gpg
+    - ssh.client
     - zsh
 
 #------------------------------------------------------------------------------
@@ -29,6 +31,18 @@ base:
 #------------------------------------------------------------------------------
 
 #
+# Roles
+#
+
+{% if roles %}
+{% for role in roles %}
+  'role:{{ role }}':
+    - match: grain
+    - roles.{{ role }}
+{% endfor %}
+{% endif %}
+
+#
 # Video Drivers
 #
 
@@ -36,21 +50,5 @@ base:
   'video:{{ video }}':
     - match: grain
     - video.{{ video }}
-{% endif %}
-
-#
-# Desktop applications
-#
-
-{% if desktop %}
-  'desktop:true':
-    - match: grain
-    - browser
-    - fonts
-    - gpg
-    - gpg.agent
-    - ssh.agent
-    - ssh.client
-    - vcs
 {% endif %}
 

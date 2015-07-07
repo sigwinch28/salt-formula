@@ -1,0 +1,9 @@
+{% set nvidia = salt['grains.filter_by']({
+  'Arch': {
+    'driver': {
+      'pkgs': [
+        'nvidia'
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('nvidia:lookup')) %}

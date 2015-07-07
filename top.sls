@@ -10,4 +10,5 @@ base:
     - ssh.agent
     - ssh.client
     - vcs
+    - video.nvidia
 

@@ -1,3 +1,6 @@
+#
+# Variables for dynamic forumla selection
+#
 {% set video = salt['grains.get']('video', '') %}
 {% set desktop = salt['grains.get']('desktop', 'false') %}
 

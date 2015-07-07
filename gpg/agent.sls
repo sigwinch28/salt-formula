@@ -1,6 +1,9 @@
 {% from "gpg/map.jinja" import gpg with context %}
 {% from "systemd/map.jinja" import systemd with context %}
 
+include:
+  - gpg
+
 systemd-user:
   file.exists:
     - name: {{ systemd.dirs.user }}
@@ -13,4 +16,6 @@ gpg-unit-user:
     - user: root
     - group: root
     - mode: 0644
+    - require:
+      - pkg: gpg
 

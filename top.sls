@@ -6,7 +6,7 @@ base:
     - pacman
   'ryuko':
     - gpg
-    - gpg.service
+    - gpg.agent
     - ssh.client
     - vcs
 

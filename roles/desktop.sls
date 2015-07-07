@@ -6,4 +6,5 @@ include:
   - ssh.agent
   - ssh.client
   - vcs
+  - xorg
 

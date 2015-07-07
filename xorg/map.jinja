@@ -1,0 +1,15 @@
+{% set xorg = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'xorg-server',
+      'xorg-xinit',
+      'xorg-xfontsel',
+      'xorg-xprop',
+      'xorg-xrandr',
+      'xorg-xset',
+      'xorg-xsetroot',
+      'arandr',
+      'xterm',
+      ],
+  },
+}, merge=salt['pillar.get']('xorg:lookup')) %}

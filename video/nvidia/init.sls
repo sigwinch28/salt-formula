@@ -1,6 +1,6 @@
 {% from "video/nvidia/map.jinja" import nvidia with context %}
 
-video-driver:
+nvidia:
   pkg.installed:
     - pkgs: {{ nvidia.driver.pkgs }}
 

@@ -1,0 +1,11 @@
+{% set browser = salt['grains.filter_by']({
+  'Arch': {
+    'firefox': {
+      'pkgs': [
+        'firefox',
+        'firefox-i18n-en-gb',
+        'flashplugin',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('desktop:lookup:browser')) %}

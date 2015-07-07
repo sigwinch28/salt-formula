@@ -5,6 +5,7 @@ base:
     - match: grain
     - pacman
   'ryuko':
+    - desktop.browser
     - gpg
     - gpg.agent
     - ssh.agent

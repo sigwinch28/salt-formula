@@ -7,6 +7,7 @@ base:
   'ryuko':
     - gpg
     - gpg.agent
+    - ssh.agent
     - ssh.client
     - vcs
 

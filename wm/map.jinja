@@ -1,0 +1,11 @@
+{% set wm = salt['grains.filter_by']({
+  'Arch': {
+    'bspwm': {
+      'pkgs': [
+        'bspwm',
+        'dmenu',
+        'sxhkd',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('wm:lookup')) %}

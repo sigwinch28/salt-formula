@@ -17,34 +17,5 @@
         'lxappearance',
       ],
     },
-    'fonts': {
-      'pkgs': [
-        'otf-fira-mono',
-        'otf-fira-sans',
-        'ttf-dejavu',
-        'ttf-liberation',
-        'ttf-symbola',
-      ],
-    },
-    'wm': {
-      'pkgs': [
-        'bspwm',
-        'dmenu',
-        'sxhkd',
-      ],
-    },
-    'xorg': {
-      'pkgs': [
-        'xorg-server',
-        'xorg-xinit',
-        'xorg-xfontsel',
-        'xorg-xprop',
-        'xorg-xrandr',
-        'xorg-xset',
-        'xorg-xsetroot',
-        'arandr',
-        'xterm',
-      ],
-    },
   },
 }, merge=salt['pillar.get']('desktop:lookup')) %}

@@ -41,6 +41,7 @@ base:
     - gpg.agent
     - ssh.agent
     - ssh.client
+    - utils
     - vcs
     - wm
     - xorg

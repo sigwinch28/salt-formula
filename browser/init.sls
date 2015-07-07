@@ -1,4 +1,7 @@
 {% from "browser/map.jinja" import browser with context %}
-{% set chosen_browser = salt['grains.get']('browser', browser.default) %}
+{% set browsers = salt['grains.get']('browser', browser.default) %}
+
 include:
-  - .{{ chosen_browser }}
+{% for browser in browsers %}
+  - .{{ browser }}
+{% endfor %}

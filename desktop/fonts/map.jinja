@@ -1,0 +1,17 @@
+{% set fonts = salt['grains.filter_by']({
+  'Arch': {
+    'fira': [
+      'otf-fira-mono',
+      'otf-fira-sans',
+    ],
+    'dejavu': [
+      'ttf-dejavu',
+    ],
+    'liberation': [
+      'ttf-liberation',
+    ],
+    'symbola': [
+      'ttf-symbola',
+    ],
+  },
+}, merge=salt['pillar.get']('desktop:lookup:fonts')) %}

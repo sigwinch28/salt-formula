@@ -6,6 +6,7 @@ base:
     - pacman
   'ryuko':
     - desktop.browser
+    - desktop.fonts
     - gpg
     - gpg.agent
     - ssh.agent

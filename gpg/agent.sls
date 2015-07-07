@@ -18,4 +18,5 @@ gpg-unit-user:
     - mode: 0644
     - require:
       - pkg: gpg
+      - file: systemd-user
 

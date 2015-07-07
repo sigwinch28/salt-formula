@@ -1,4 +1,4 @@
-{% from "desktop/fonts/map.jinja" import fonts with context %}
+{% from "fonts/map.jinja" import fonts with context %}
 
 {% for name, pkgs in fonts.iteritems() %}
 font-{{ name }}:

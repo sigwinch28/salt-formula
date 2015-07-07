@@ -1,4 +1,4 @@
-{% from "desktop/browser/map.jinja" import browser with context %}
+{% from "browser/map.jinja" import browser with context %}
 {% set firefox = browser.firefox %}
 
 firefox:

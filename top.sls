@@ -5,8 +5,8 @@ base:
     - match: grain
     - pacman
   'ryuko':
-    - desktop.browser
-    - desktop.fonts
+    - browser
+    - fonts
     - gpg
     - gpg.agent
     - ssh.agent

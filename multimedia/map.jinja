@@ -1,0 +1,19 @@
+{% set multimedia = salt['grains.filter_by']({
+  'Arch': {
+    'mpv': {
+      'pkgs': [
+        'mpv',
+      ],
+    },
+    'feh': {
+      'pkgs': [
+        'feh',
+      ],
+    },
+    'ffmpeg': {
+      'pkgs': [
+         'ffmpeg',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('multimedia:lookup')) %}

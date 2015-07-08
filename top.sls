@@ -40,6 +40,7 @@ base:
     - gpg
     - gpg.agent
     - irc
+    - multimedia
     - ssh.agent
     - ssh.client
     - utils

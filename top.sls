@@ -10,6 +10,7 @@ base:
 
   '*':
     - gpg
+    - ntp.client
     - ssh.client
     - zsh
 

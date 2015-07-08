@@ -1,0 +1,10 @@
+{% set ntp = salt['grains.filter_by']({
+  'Arch': {
+    'client': {
+      'pkgs': [
+        'ntp',
+      ],
+      'svc': 'ntpd',
+    },
+  },
+}, merge=salt['pillar.get']('ntp:lookup')) %}

@@ -1,6 +1,7 @@
 #
 # Variables for dynamic forumla selection
 #
+{% set audio = salt['grains.get']('audio', '') %}
 {% set video = salt['grains.get']('video', '') %}
 
 base:
@@ -51,6 +52,16 @@ base:
   'role:server':
     - match: grain
     - ssh.server
+
+#
+# Audio Drivers
+#
+
+{% if audio %}
+  'audio:{{ audio }}':
+    - match: grain
+    - audio.{{ audio }}
+{% endif %}
 
 #
 # Video Drivers

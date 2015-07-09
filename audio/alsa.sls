@@ -3,13 +3,13 @@
 {% set alsa = audio.alsa %}
 
 {% if 'utils' in alsa %}
-alsa_utils:
+alsa-utils:
   pkg.installed:
     - pkgs: {{ alsa.utils }}
 {% endif %}
 
 {% if 'plugins' in alsa %}
-alsa_plugins:
+alsa-plugins:
   pkg.installed:
     - pkgs: {{ alsa.plugins }}
 {% endif %}

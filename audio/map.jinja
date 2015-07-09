@@ -6,7 +6,7 @@
     },
     'pulseaudio': {
       'pkgs': [ 'pulseaudio', 'pulseaudio-alsa', 'lib32-libpulse', ],
-      'utils': [ 'paprefs', 'pavucontrol', ],
+      'utils': [ 'paprefs', 'pavucontrol', 'ponymix', ],
     },
   },
 }, merge=salt['pillar.get']('audio:lookup')) %}

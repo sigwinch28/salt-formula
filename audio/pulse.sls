@@ -10,8 +10,9 @@ pulseaudio:
     - require:
       - sls: audio.alsa
 
-pulseaudio_utils:
+pulseaudio-utils:
   pkg.installed:
     - pkgs: {{ pulseaudio.utils }}
     - require:
       - pkg: pulseaudio
+

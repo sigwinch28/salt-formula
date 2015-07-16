@@ -1,6 +1,7 @@
 #
 # Variables for dynamic forumla selection
 #
+{% set languages = salt['grains.get']('language', '') %}
 {% set audio = salt['grains.get']('audio', '') %}
 {% set video = salt['grains.get']('video', '') %}
 
@@ -59,6 +60,18 @@ base:
   'role:server':
     - match: grain
     - ssh.server
+
+#
+# Programming Languages
+#
+
+{% if languages %}
+{% for lang in languages %}
+  'language:{{ lang }}':
+    - match: grain
+    - lang.{{ lang }}
+{% endfor %}
+{% endif %}
 
 #
 # Audio Drivers

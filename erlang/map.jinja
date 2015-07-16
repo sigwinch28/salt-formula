@@ -1,0 +1,19 @@
+{% set erlang = salt['grains.filter_by']({
+  'Arch': {
+    'full': {
+      'pkgs': [
+        'erlang',
+      ],
+    },
+    'nox': {
+      'pkgs': [
+        'erlang-nox',
+      ],
+    },
+    'rebar': {
+      'pkgs': [
+        'rebar',
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('erlang:lookup')) %}

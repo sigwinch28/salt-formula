@@ -1,0 +1,11 @@
+{% set haskell = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'ghc',
+      'cabal-install',
+      'haddock',
+      'happy',
+      'alex',
+    ],
+  },
+}, merge=salt['pillar.get']('haskell:lookup')) %}

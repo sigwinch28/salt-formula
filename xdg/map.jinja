@@ -1,0 +1,7 @@
+{% set xdg = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'xdg-user-dirs',
+    ],
+  },
+}, merge=salt['pillar.get']('xdg:lookup')) %}

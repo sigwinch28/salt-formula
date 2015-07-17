@@ -1,0 +1,11 @@
+{% set gtk = salt['grains.filter_by']({
+  'Arch': {
+    'utils': {
+      'lxappearance': {
+        'pkgs': [
+          'lxappearance',
+        ],
+      },
+    },
+  },
+}, merge=salt['pillar.get']('gtk:lookup')) %}

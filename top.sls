@@ -49,6 +49,7 @@ base:
     - fonts
     - gpg
     - gpg.agent
+    - gtk
     - irc
     - multimedia
     - ssh.agent

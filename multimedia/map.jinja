@@ -15,5 +15,10 @@
          'ffmpeg',
       ],
     },
+    'imagemagick': {
+      'pkgs': [
+        'imagemagick',
+      ],
+    },
   },
 }, merge=salt['pillar.get']('multimedia:lookup')) %}

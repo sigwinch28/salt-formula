@@ -1,0 +1,7 @@
+{% set vpn = salt['grains.filter_by']({
+  'Arch': {
+     'conf_dir': '/etc/openvpn',
+     'svc': 'openvpn',
+     'pkgs': [ 'openvpn' ],
+   },
+}, merge=salt['pillar.get']('vpn:lookup')) %}

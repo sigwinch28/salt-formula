@@ -1,0 +1,37 @@
+{% from "vpn/map.jinja" import vpn with context %}
+{% from "ca/map.jinja" import ca with context %}
+{% set server = vpn.servers[name] %}
+
+proto {{ server.proto }}
+dev {{ server.dev }}
+
+ca {{ ca.dest_dir }}/ca.crt
+cert {{ server.pki.cert }}
+key {{ server.pki.key }}
+dh {{ server.pki.dh }}
+
+server {{ server.addr.prefix }} {{ server.addr.mask }}
+client-config-dir /etc/openvpn/ccd
+topology {{ server.topology }}
+
+{% if server.client_to_client %}
+client-to-client
+{% endif %}
+
+{% if server.compression is defined %}
+comp-{{ server.compression }}
+{% endif %}
+
+{% if server.security is defined %}
+user {{ server.security.user }}
+group {{ server.security.group }}
+{% endif %}
+
+{% if server.persist is defined %}
+{% for name, ok in server.persist.iteritems() %}
+{% if ok %}
+persist-{{ name }}
+{% endif %}
+{% endfor %}
+{% endif %}
+

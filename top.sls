@@ -35,8 +35,10 @@ base:
   'honnouji':
     - nfs.server
     - proxy.server
+    - vpn.client
   'area11':
     - proxy.server
+    - vpn.server
 
 #------------------------------------------------------------------------------
 # Custom Grains

@@ -5,7 +5,10 @@
 client
 dev {{ client.dev }}
 proto {{ client.proto }}
-remote area11.joehazzers.com 1194
+{% for server, fqdn in salt['mine.get']('vpn:lookup:servers:' + name + ':*', 'fqdn', expr_form='pillar_pcre').items() %}
+remote {{ fqdn }} 1194
+{% endfor %}
+
 {% if client.resolv_retry is defined %}
 resolv-retry {{ client.resolv_retry }}
 {% endif %}

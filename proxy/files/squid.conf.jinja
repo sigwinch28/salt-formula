@@ -75,7 +75,7 @@ refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
 refresh_pattern .		0	20%	4320
 
 {% if proxy.type == 'child' -%}
-{% for server, addrs in salt['mine.get']('proxy:lookup:type:parent', 'network.ip_addrs', expr_form='pillar').items() %}
+{% for server, addrs in salt['mine.get']('proxy:lookup:type:parent', 'vpn_ip_addrs', expr_form='pillar').items() %}
 cache_peer {{ addrs[0] }} parent 3128 0 no-query no-digest {% if loop.first %}default{% endif %}
 {% endfor %}
 never_direct allow all

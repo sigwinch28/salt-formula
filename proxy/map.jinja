@@ -1,0 +1,8 @@
+{% set proxy = salt['grains.filter_by']({
+  'Arch': {
+    'pkgs': [
+      'squid',
+    ],
+    'svc': 'squid',
+  },
+}, merge=salt['pillar.get']('proxy:lookup')) %}

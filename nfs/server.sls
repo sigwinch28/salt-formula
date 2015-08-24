@@ -14,6 +14,8 @@ nfs-server:
     - user: root
     - group: root
     - mode: 0644
+    - require:
+      - pkg: nfs-server
   service.running:
     - name: {{ server.svc }}
     - enable: true
@@ -31,10 +33,14 @@ nfs-exports:
     - user: root
     - group: root
     - mode: 0644
+    - require:
+      - pkg: nfs-server
 
 nfs-exports-reload:
   cmd.wait:
     - name: {{ server.exports.cmd.reload }}
     - watch:
       - file: nfs-exports
+    - require:
+      - pkg: nfs-server
 

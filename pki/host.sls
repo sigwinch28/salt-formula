@@ -3,9 +3,9 @@
 
 host-certificate:
   file.exists:
-    - name: {{ host.crt_dest }}
+    - name: {{ host.crt }}
 
 host-key:
   file.exists:
-    - name: {{ host.key_dest }}
+    - name: {{ host.key }}
 

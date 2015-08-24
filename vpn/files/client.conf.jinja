@@ -27,9 +27,9 @@ persist-{{ name }}
 {% endfor %}
 {% endif %}
 
-ca {{ pki.ca.dest }}
-cert {{ pki.host.crt_dest }}
-key {{ pki.host.key_dest }}
+ca {{ pki.ca.crt }}
+cert {{ pki.host.crt }}
+key {{ pki.host.key }}
 
 {% if client.remote_cert_tls is defined %}
 remote-cert-tls {{ client.remote_cert_tls }}

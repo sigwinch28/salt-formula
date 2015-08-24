@@ -3,8 +3,8 @@
 
 ca-certificate:
   file.managed:
-    - name: {{ ca.dest }}
-    - source: {{ ca.src }}
+    - name: {{ ca.crt }}
+    - source: {{ ca.crt_src }}
     - user: root
     - group: root
     - mode: 0644

@@ -1,14 +1,14 @@
 {% from "vpn/map.jinja" import vpn with context %}
-{% from "ca/map.jinja" import ca with context %}
+{% from "pki/map.jinja" import pki with context %}
 {% set server = vpn.servers[name] %}
 
 proto {{ server.proto }}
 dev {{ server.dev }}
 
-ca {{ ca.dest_dir }}/ca.crt
-cert {{ server.pki.cert }}
-key {{ server.pki.key }}
-dh {{ server.pki.dh }}
+ca {{ pki.ca.crt }}
+cert {{ pki.host.crt }}
+key {{ pki.host.key }}
+dh {{ server.dh }}
 
 server {{ server.addr.prefix }} {{ server.addr.mask }}
 client-config-dir /etc/openvpn/ccd

@@ -1,12 +1,12 @@
 {% set pki = salt['grains.filter_by']({
   'Arch': {
     'ca': {
-      'dest': '/etc/ca-certificates/trust-source/anchors/ca.crt',
+      'crt': '/etc/ca-certificates/trust-source/anchors/ca.crt',
       'install_cmd': 'trust extract-compat',
     },
     'host': {
-      'key_dest': '/etc/ssl/private/host.key',
-      'crt_dest': '/etc/ssl/private/host.crt',
+      'key': '/etc/ssl/private/host.key',
+      'crt': '/etc/ssl/private/host.crt',
     },
   },
 }, merge=salt['pillar.get']('pki:lookup')) %}

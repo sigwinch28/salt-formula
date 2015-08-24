@@ -1,11 +1,10 @@
 {% from "vpn/map.jinja" import vpn with context %}
-{% from "ca/map.jinja" import ca with context %}
+{% from "pki/map.jinja" import pki with context %}
 {% set client = vpn.clients[name] %}
-{% set server = vpn.servers[name] %}
 
 client
 dev {{ client.dev }}
-proto {{ server.proto }}
+proto {{ client.proto }}
 remote area11.joehazzers.com 1194
 {% if client.resolv_retry is defined %}
 resolv-retry {{ client.resolv_retry }}
@@ -28,16 +27,16 @@ persist-{{ name }}
 {% endfor %}
 {% endif %}
 
-ca {{ ca.dest_dir }}/ca.crt
-cert {{ client.pki.cert }}
-key {{ client.pki.key }}
+ca {{ pki.ca.dest }}
+cert {{ pki.host.crt_dest }}
+key {{ pki.host.key_dest }}
 
 {% if client.remote_cert_tls is defined %}
 remote-cert-tls {{ client.remote_cert_tls }}
 {% endif %}
 
-{% if server.compression is defined %}
-comp-{{ server.compression }}
+{% if client.compression is defined %}
+comp-{{ client.compression }}
 {% endif %}
 
 # Set log file verbosity.

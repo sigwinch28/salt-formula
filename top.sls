@@ -33,14 +33,46 @@ base:
 #------------------------------------------------------------------------------
 # Individual Minions
 #------------------------------------------------------------------------------
-  'honnouji':
-    - nfs.server
-    - proxy.server
-    - samba.server
-    - vpn.client
   'area11':
     - prometheus.server
+
+#------------------------------------------------------------------------------
+# Pillar Matches
+#------------------------------------------------------------------------------
+
+#
+# NFS
+#
+
+  'nfs:lookup:export:*':
+    - match: pillar_pcre
+    - nfs.server
+
+#
+# Proxy
+#
+
+  'proxy:lookup:conf:*':
+    - match: pillar_pcre
     - proxy.server
+
+#
+# Samba
+#
+  'samba:lookup:share:*':
+    - match: pillar_pcre
+    - samba.server
+
+#
+# VPN
+#
+
+  'vpn:lookup:clients:*':
+    - match: pillar_pcre
+    - vpn.client
+
+  'vpn:lookup:servers:*':
+    - match: pillar_pcre
     - vpn.server
 
 #------------------------------------------------------------------------------

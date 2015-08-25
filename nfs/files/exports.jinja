@@ -1,4 +1,4 @@
-{% set exports = salt['pillar.get']('nfs:lookup:exports') %}
+{% set exports = salt['pillar.get']('nfs:lookup:export') %}
 # /etc/exports - exports(5) - directories exported to NFS clients
 #
 # Example for NFSv2 and NFSv3:
@@ -11,7 +11,7 @@
 #  /srv/nfs4/home   *(rw,sync,sec=krb5i,nohide)
 #
 # Use `exportfs -arv` to reload.
-{% for export in exports -%}
+{% for name, export in exports.iteritems() -%}
 {{ export.path }}    {{ export.client }}({{ export.options }})
 {% endfor -%}
 

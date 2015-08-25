@@ -1,6 +1,9 @@
 {% from "prometheus/map.jinja" import prometheus with context %}
 {% set server = prometheus.server %}
 
+include:
+  - prometheus.user
+
 prometheus-server-archive:
   archive.extracted:
     - name: {{ server.dir.bin }}
@@ -25,14 +28,23 @@ prometheus-server-dir-conf:
     - group: root
     - mode: 0755
 
+prometheus-server-dir-rules:
+  file.directory:
+    - name: {{ server.dir.conf }}/rules.d
+    - user: root
+    - group: root
+    - mode: 0755
+    - require:
+      - file: prometheus-server-dir-conf
+
 prometheus-server-dir-data:
   file.directory:
     - name: {{ server.dir.data }}
-    - user: {{ server.user }}
-    - group: {{ server.group }}
+    - user: {{ prometheus.user }}
+    - group: {{ prometheus.group }}
     - mode: 0755
     - require:
-      - user: prometheus-server-user
+      - sls: prometheus.user
 
 prometheus-server-unit:
   file.managed:
@@ -42,12 +54,4 @@ prometheus-server-unit:
     - user: root
     - group: root
     - mode: 0644
-
-prometheus-server-user:
-  user.present:
-    - name: {{ server.user }}
-    - createhome: false
-    - home: {{ server.dir.data }}
-    - gid_from_name: true
-    - system: true
 

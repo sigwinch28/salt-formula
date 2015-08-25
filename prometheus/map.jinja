@@ -1,13 +1,4 @@
 {% set prometheus = salt['grains.filter_by']({
   'Arch': {
-    'server': {
-      'pkgs': [
-        'nfs-utils',
-      ],
-      'svc': 'nfs-server',
-      'export_conf': {
-        'reload_cmd': 'exportfs -ra',
-      },
-    },
   },
 }, merge=salt['pillar.get']('prometheus:lookup')) %}

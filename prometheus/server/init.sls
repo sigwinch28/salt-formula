@@ -14,9 +14,11 @@ prometheus-server:
       - sls: prometheus.server.install
   file.managed:
     - name: {{ server.dir.conf }}/config.yml
+    - source: {{ server.conf.tmpl }}
+    - template: jinja
+    - content: {{ prometheus.config }}
     - user: root
     - group: root
     - mode: 0644
-    - contents_pillar: prometheus:lookup:server:config
     - require:
       - sls: prometheus.server.install

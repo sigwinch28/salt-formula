@@ -4,6 +4,7 @@
 {% set languages = salt['grains.get']('language', '') %}
 {% set audio = salt['grains.get']('audio', '') %}
 {% set video = salt['grains.get']('video', '') %}
+{% set prometheus_exporters = salt['grains.get']('prometheus_exporter', '') %}
 
 base:
 #------------------------------------------------------------------------------
@@ -100,3 +101,14 @@ base:
     - video.{{ video }}
 {% endif %}
 
+#
+# Prometheus Exporters
+#
+
+{% if prometheus_exporters %}
+{% for exporter in prometheus_exporters %}
+  'prometheus_exporter:{{ exporter }}':
+    - match: grain
+    - prometheus.exporter.{{ exporter }}
+{% endfor %}
+{% endif %}

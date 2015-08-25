@@ -1,13 +1,13 @@
 {% from "prometheus/map.jinja" import prometheus with context %}
-{% set server = prometheus.server %}
+{% set node = prometheus.exporter.node %}
 [Unit]
-Description=Prometheus service
+Description=Prometheus node exporter
 After=network.target                                     
 
 [Service]
 User={{ prometheus.user }}
 Group={{ prometheus.group }}
-ExecStart={{ server.dir.bin }}/{{ server.bin }} -storage.local.path={{ server.dir.data }} -config.file={{ server.dir.conf }}/config.yml
+ExecStart={{ node.dir }}/{{ node.bin }}
 
 [Install]
 WantedBy=multi-user.target

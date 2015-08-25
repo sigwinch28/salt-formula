@@ -36,6 +36,7 @@ base:
   'honnouji':
     - nfs.server
     - proxy.server
+    - samba.server
     - vpn.client
   'area11':
     - prometheus.server

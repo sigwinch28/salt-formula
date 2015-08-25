@@ -1,0 +1,13 @@
+{% set samba = salt['grains.filter_by']({
+  'Arch': {
+    'server': {
+      'conf': {
+        'dest': '/etc/samba/smb.conf',
+      },
+      'pkgs': [
+        'samba',
+      ],
+      'svcs': [ 'smbd', 'nmbd' ],
+    },
+  },
+}, merge=salt['pillar.get']('samba:lookup')) %}

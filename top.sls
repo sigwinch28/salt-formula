@@ -37,6 +37,7 @@ base:
     - proxy.server
     - vpn.client
   'area11':
+    - prometheus.server
     - proxy.server
     - vpn.server
 
